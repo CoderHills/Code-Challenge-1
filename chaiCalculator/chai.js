@@ -1,33 +1,40 @@
+const readline = require('readline');
+
 function calculateChaiIngredients() {
-  // Prompt the user for the number of cups
-  let numberOfCups = prompt("Karibu! How many cups of Chai Bora would you like to make?");
-  
-  // Convert the input to a number
-  numberOfCups = Number(numberOfCups);
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
 
-  // Check if the input is a valid number
-  if (isNaN(numberOfCups) || numberOfCups <= 0) {
-    alert("Please enter a valid number greater than 0.");
-    return;
-  }
+  rl.question("Karibu! How many cups of Chai Bora would you like to make? ", (input) => {
+    let numberOfCups = Number(input);
 
-  // Define the standard recipe quantities for 1 cup
-  const waterPerCup = 200; // in ml
-  const milkPerCup = 50;   // in ml
-  const teaLeavesPerCup = 1; // in tablespoons
-  const sugarPerCup = 2;   // in teaspoons
+    if (isNaN(numberOfCups) || numberOfCups <= 0) {
+      console.log("Please enter a valid number greater than 0.");
+      rl.close();
+      return;
+    }
 
-  // Calculate the total ingredients needed
-  const totalWater = waterPerCup * numberOfCups;
-  const totalMilk = milkPerCup * numberOfCups;
-  const totalTeaLeaves = teaLeavesPerCup * numberOfCups;
-  const totalSugar = sugarPerCup * numberOfCups;
+    const waterPerCup = 200; // ml
+    const milkPerCup = 50;   // ml
+    const teaLeavesPerCup = 1; // tablespoons
+    const sugarPerCup = 2;   // teaspoons
 
-  // Display the results using template literals with backticks
-  console.log(`To make ${numberOfCups} cups of Kenyan Chai, you will need:`);
-  console.log(`Water: ${totalWater} ml`);
-  console.log(`Milk: ${totalMilk} ml`);
-  console.log(`Tea Leaves (Majani): ${totalTeaLeaves} tablespoons`);
-  console.log(`Sugar (Sukari): ${totalSugar} teaspoons`);
-  console.log("\nEnjoy your Chai Bora!");
+    const totalWater = waterPerCup * numberOfCups;
+    const totalMilk = milkPerCup * numberOfCups;
+    const totalTeaLeaves = teaLeavesPerCup * numberOfCups;
+    const totalSugar = sugarPerCup * numberOfCups;
+
+    console.log(`\nTo make ${numberOfCups} cups of Kenyan Chai, you will need:`);
+    console.log(`Water: ${totalWater} ml`);
+    console.log(`Milk: ${totalMilk} ml`);
+    console.log(`Tea Leaves (Majani): ${totalTeaLeaves} tablespoons`);
+    console.log(`Sugar (Sukari): ${totalSugar} teaspoons`);
+    console.log("\nEnjoy your Chai Bora!");
+
+    rl.close();
+  });
 }
+
+calculateChaiIngredients();
+
