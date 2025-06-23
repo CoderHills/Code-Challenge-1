@@ -12,7 +12,7 @@ function calculateBodaFare(distanceInKm) {
   const tripFare = distanceInKm * chargePerKm;
   const totalFare = baseFare + tripFare;
 
-  const output = `Uko kwote? Io ni ${distanceInKm} km:
+  const output = `Uko kwote? hiyo ni ${distanceInKm} km:
 Ukikalia Pikipiki: KES ${baseFare}
 Mpaka Uko: KES ${tripFare}
 Total: KES ${totalFare}
